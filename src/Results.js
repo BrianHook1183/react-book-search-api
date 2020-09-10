@@ -6,6 +6,7 @@ class Results extends React.Component {
     return (
       <div className= "Results">
         <h2>This is the Results</h2>
+        {console.log(this.props.books.items)}
         <Book />
       </div>
     );

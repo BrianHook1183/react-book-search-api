@@ -4,15 +4,25 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className= "FilterBar">
+
         <label>Print Type: </label>
-        <select>
+        <select 
+          name="printType"
+          onChange={this.props.handleChange}
+          value={this.props.printTypeValue}
+        >
           <option value="all">All</option>
           <option value="books">Books</option>
           <option value="magazines">Magazines</option>
         </select>
+
         <label>Book Type: </label>
-        <select>
-          <option>No Filter</option>
+        <select 
+          name="filter"
+          onChange={this.props.handleChange}
+          value={this.props.filterValue}
+        >
+          <option value=''>No Filter</option>
           <option value="ebooks">eBooks</option>
           <option value="free-ebooks">Free eBooks</option>
         </select>
