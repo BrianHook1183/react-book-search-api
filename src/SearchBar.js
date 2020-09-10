@@ -5,18 +5,15 @@ class SearchBar extends React.Component {
     return (
       <div className= "SearchBar">
         <form 
-          onSubmit={(event) => {
-            // console.log(event);
-            this.props.handleChange(event)}
-          }
-          value={this.props.queryValue}
+           onSubmit={this.props.handleSubmit}
         >
-          <label>Search:
-            <input 
-              type="text" 
-              name="query"
-            />
-          </label>
+          <input 
+            placeholder="Search Term"
+            type="text" 
+            name="query"
+            value={this.props.query}
+            onChange={this.props.handleInputChange}
+          />
           <button>Search</button>
         </form>
       </div>

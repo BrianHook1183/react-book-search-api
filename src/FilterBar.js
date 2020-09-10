@@ -8,7 +8,7 @@ class FilterBar extends React.Component {
         <label>Print Type: </label>
         <select 
           name="printType"
-          onChange={this.props.handleChange}
+          onChange={this.props.handleInputChange}
           value={this.props.printTypeValue}
         >
           <option value="all">All</option>
@@ -19,10 +19,9 @@ class FilterBar extends React.Component {
         <label>Book Type: </label>
         <select 
           name="filter"
-          onChange={this.props.handleChange}
+          onChange={this.props.handleInputChange}
           value={this.props.filterValue}
         >
-          <option value=''>No Filter</option>
           <option value="ebooks">eBooks</option>
           <option value="free-ebooks">Free eBooks</option>
         </select>
