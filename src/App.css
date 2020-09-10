@@ -1,0 +1,29 @@
+.App {
+  margin-left: 10px;
+  width: 600px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+.SearchBar {
+  text-align: center;
+  background-color: grey;
+}
+
+.FilterBar {
+  text-align: center;
+  background-color: lightgrey;
+}
+
+
+.Results {
+  text-align: center;
+}
+
+.Book {
+  text-align: center;
+}
