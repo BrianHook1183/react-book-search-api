@@ -9,7 +9,7 @@ class Results extends React.Component {
     resultsHeader = "I'm ready to search for you, sir"
 
     const bookList = this.props.bookFetch.map((book, index) => (
-    <p key={index}>{book.title}</p>
+    <Book key={index} title={book.title} />
     ))
 
     return ( 

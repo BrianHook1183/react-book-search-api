@@ -4,7 +4,7 @@ class Book extends React.Component {
   render() {
     return (
       <div className= "Book">
-        <h3>This is a book</h3>
+        <h3>{this.props.title}</h3>
       </div>
     );
   }
