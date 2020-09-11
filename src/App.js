@@ -10,25 +10,40 @@ class App extends React.Component {
     this.state = ({
       query: "",
       filter: "ebooks",
-      printType: "all",
-      books: []
+      orderBy: "relevance",
+      bookFetch: [],
+      isLoaded: false
     })
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    const { query, filter, printType } = this.state;
+    const { query, filter, orderBy } = this.state;
 
     const endpoint = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyB6i58gDXBIJ7cwLzgnsXL6sdkww-vqdHY"
-    const url= endpoint + '&q=' + query + '&filter=' + filter + '&printType=' + printType;
+    const url= endpoint + '&q=' + query + '&filter=' + filter + '&orderBy=' + orderBy;
     // console.log(url);
     fetch(url)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Something went wrong, please try again later.');
+        }
+        return response;
+      })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        const bookList = Object.keys(responseJson.items)
+                        .map(key => responseJson.items[key].volumeInfo)
         this.setState({
-          books: responseJson
+          bookFetch: bookList,
+          isLoaded: true
         })
+        console.log(bookList);
       })
+      .catch(err => {
+        this.setState({
+          bookFetch: err.message
+        });
+      });
   }
   handleInputChange = (event) => {
     event.preventDefault();
@@ -54,11 +69,11 @@ class App extends React.Component {
         <FilterBar 
           handleInputChange={this.handleInputChange}
           filterValue={this.state.filter} 
-          printTypeValue={this.state.printType}
+          orderByValue={this.state.orderBy}
         />
         <Results 
-          handleInputChange={this.handleInputChange} 
-          books={this.state.books}
+          isLoaded={this.state.isLoaded}
+          bookFetch={this.state.bookFetch}
         />
       </main>
     );

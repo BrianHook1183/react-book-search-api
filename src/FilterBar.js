@@ -5,17 +5,6 @@ class FilterBar extends React.Component {
     return (
       <div className= "FilterBar">
 
-        <label>Print Type: </label>
-        <select 
-          name="printType"
-          onChange={this.props.handleInputChange}
-          value={this.props.printTypeValue}
-        >
-          <option value="all">All</option>
-          <option value="books">Books</option>
-          <option value="magazines">Magazines</option>
-        </select>
-
         <label>Book Type: </label>
         <select 
           name="filter"
@@ -25,6 +14,18 @@ class FilterBar extends React.Component {
           <option value="ebooks">eBooks</option>
           <option value="free-ebooks">Free eBooks</option>
         </select>
+
+        <label>Order By: </label>
+        <select 
+          name="orderBy"
+          onChange={this.props.handleInputChange}
+          value={this.props.orderByValue}
+        >
+          <option value="relevance">Relevance</option>
+          <option value="newest">Newest</option>
+        </select>
+
+
       </div>
     );
   }
