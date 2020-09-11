@@ -12,7 +12,8 @@ class App extends React.Component {
       filter: "ebooks",
       orderBy: "relevance",
       bookFetch: [],
-      isLoaded: false
+      isLoaded: false,
+      fetchError: ""
     })
   }
   handleSubmit = (event) => {
@@ -41,7 +42,7 @@ class App extends React.Component {
       })
       .catch(err => {
         this.setState({
-          bookFetch: err.message
+          fetchError: err.message
         });
       });
   }
@@ -74,6 +75,7 @@ class App extends React.Component {
         <Results 
           isLoaded={this.state.isLoaded}
           bookFetch={this.state.bookFetch}
+          fetchError={this.state.fetchError}
         />
       </main>
     );
